@@ -8,9 +8,9 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    productImage: {
-        type: String
-    },
+    // productImage: {
+    //     type: File
+    // },
     price: {
         type: Number,
         default: 0
