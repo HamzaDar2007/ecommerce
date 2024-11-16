@@ -1,0 +1,85 @@
+My project is a basic e-commerce application with four main components: Category,
+Order, Product,and User.Here’s a step-by-step roadmap explaining how each part works
+and interacts within the application.
+
+
+1. Models: Defining Database Structure
+
+Category Model: Stores categories with fields like name, description, and status. 
+Each category can be associated with products.
+
+Product Model: Contains product details such as name, description, price, stock, category, and owner.
+
+Order Model: Keeps order information, including orderItems (a list of items), orderPrice,
+customer, and status.
+
+User Model: Represents users with fields like username, email, password, and role
+(either "admin" or "customer").
+
+These models define my database schema and are essential for organizing and accessing 
+data within your MongoDB database.
+
+2. Services
+Each service file contains the core logic to interact with the database for CRUD operations.
+
+Category Service: Handles retrieving, creating, updating, and deleting categories.
+
+Order Service: Manages orders, including creating, updating, deleting, and retrieving orders. 
+               It also populates the customer and product details.
+
+Product Service: Handles products, including CRUD operations and retrieving 
+                 products by category or user.
+
+User Service: Manages user registration, including checking if an email is already in use, 
+              hashing passwords, and saving the new user with a default role of "customer".
+
+3. Controllers
+Controllers handle incoming HTTP requests, process them with service methods, and return
+appropriate HTTP responses.
+
+Category Controller: Provides endpoints for listing, creating, updating, retrieving by ID,
+                     and deleting categories.
+
+Order Controller: Manages orders with endpoints for creating, listing, retrieving by ID,
+                     updating, and deleting orders.
+
+Product Controller: Offers endpoints for creating, listing, updating, retrieving by ID,
+                     deleting products, and listing products by category or user.
+
+User Controller: Provides user registration, including error handling for duplicate email 
+                     registration.
+
+
+4. Routes
+Routes define the endpoints for each module, linking HTTP requests to controller functions.
+
+1:- Category Routes:
+
+GET /: Retrieve all categories.
+POST /: Create a new category.
+GET /:id: Retrieve a category by ID.
+PUT /:id: Update a category.
+DELETE /:id: Delete a category.
+
+2:- Order Routes:
+POST /: Create a new order.
+
+GET /: Retrieve all orders with populated customer and product information.
+GET /:id: Retrieve a specific order by ID.
+PUT /:id: Update an order.
+DELETE /:id: Delete an order.
+
+3:- Product Routes:
+
+GET /: Retrieve all products.
+GET /allProducts/:categoryId: Retrieve all products for a specific category.
+GET /allProductsByUser/:userId: Retrieve all products by a specific user.
+POST /: Create a new product.
+GET /:id: Retrieve a product by ID.
+PUT /:id: Update a product.
+DELETE /:id: Delete a product.
+
+
+4:- User Routes:
+
+POST /register: Register a new user.

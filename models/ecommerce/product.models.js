@@ -1,4 +1,5 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+
 const productSchema = new mongoose.Schema({
     description: {
         type: String,
@@ -8,9 +9,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // productImage: {
-    //     type: File
-    // },
     price: {
         type: Number,
         default: 0
@@ -19,14 +17,19 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    category:{
+    category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
         required: true
     },
-    owner:{
+    owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+    },
+    image: {
+        type: String, // URL or path to the image
+        required: true // Optional: set to `false` if images are not mandatory
     }
-}, {timestamps: true})
-export const Product = mongoose.model("Product", productSchema)
+}, { timestamps: true });
+
+export const Product = mongoose.model("Product", productSchema);

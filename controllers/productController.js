@@ -11,7 +11,12 @@ export const getAllproducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
     try {
-        const product = await productService.create(req.body);
+        const { description, name, price, stock, category, owner } = req.body;
+
+        const image = req.file ? req.file.path : null;
+
+        const product = await productService.create({ description, name, price, stock, category, owner, image });
+
         res.status(201).json(product);
     } catch (error) {
         res.status(500).json({ message: error.message });

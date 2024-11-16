@@ -1,16 +1,16 @@
 import mongoose from "mongoose"
-const oderItemsSchema = new mongoose.Schema({
+const orderItemsSchema = new mongoose.Schema({
     productId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product"
     },
-    quanitity:{
+    quantity:{
         type: Number,
         required: true
     }
 })
-const oderSchema = new mongoose.Schema({
-    oderPrice: {
+const orderSchema = new mongoose.Schema({
+    orderPrice: {
         type: Number,
         required: true
     },
@@ -18,14 +18,22 @@ const oderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    oderItems: {
-        type: [oderItemsSchema]
+    orderItems: {
+        type: [orderItemsSchema]
     },
-    address: {
+    status: {
         type: String,
         required: true,
         enum: ["PENDING", "CANCELLED", "DELIVERED"],
         default: "PENDING"
+    },
+    dateOrdered: {
+        type: Date,
+        default: Date.now,
+    },
+    address: {
+        type: String,
+        required: true
     }
 }, {timestampes: true})
-export const Oder = mongoose.model("Oder", oderSchema)
+export const Order = mongoose.model("Order", orderSchema)
