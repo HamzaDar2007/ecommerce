@@ -83,3 +83,10 @@ DELETE /:id: Delete a product.
 4:- User Routes:
 
 POST /register: Register a new user.
+
+
+
+
+
+
+
