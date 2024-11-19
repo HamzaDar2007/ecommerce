@@ -12,3 +12,5 @@ router.get('/protected', authenticate, (req, res) => {
 });
 
 export default router;
+
+
