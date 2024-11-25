@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema({
     },
     image: {
         type: String, // URL or path to the image
-        required: true // Optional: set to `false` if images are not mandatory
+        required: false // Optional: set to `false` if images are not mandatory
     }
 }, { timestamps: true });
 
