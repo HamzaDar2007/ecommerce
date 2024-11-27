@@ -26,6 +26,15 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    averageRating: {
+        type: Number,
+        default: 0
+    
+    },
+    numReviews: {
+        type: Number,
+        default: 0, // Total number of reviews
+      },
     image: {
         type: String, // URL or path to the image
         required: false // Optional: set to `false` if images are not mandatory

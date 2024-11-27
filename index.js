@@ -15,6 +15,9 @@ import wishlistRoutes from "./routes/wishlist.routes.js"
 import inventoryRoutes from "./routes/inventory.routes.js"; 
 import invoiceRoutes from "./routes/invoice.routes.js";
 import funderRoutes from "./routes/funder.routes.js";
+import reviewRoutes from "./routes/review.routes.js";
+
+
 
 dotenv.config();
 
@@ -56,6 +59,7 @@ app.use("/api/inventory", inventoryRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/invoices", invoiceRoutes);
 app.use("/api/funders", funderRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
