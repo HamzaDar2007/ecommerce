@@ -35,6 +35,17 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0, // Total number of reviews
       },
+     // Flash Sale Fields
+     isFlashSale: {
+        type: Boolean,
+        default: false,
+    },
+    flashSalePrice: {
+        type: Number,
+    },
+    flashSaleEndDate: {
+        type: Date,
+    },
     image: {
         type: String, // URL or path to the image
         required: false // Optional: set to `false` if images are not mandatory
