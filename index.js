@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url';
 import cors from "cors";
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import { swaggerSpec, swaggerUiMiddleware } from "./swagger.js";
+import swaggerUi from "swagger-ui-express";
 
 import productRoutes from './routes/productRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
@@ -19,7 +21,6 @@ import reviewRoutes from "./routes/review.routes.js";
 import couponRoutes from "./routes/coupon.routes.js";
 
 
-
 dotenv.config();
 
 const app = express();
@@ -31,11 +32,10 @@ app.use(express.static('static'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 app.use(cors());
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 mongoose.connect('mongodb://localhost:27017/ecommerce')
@@ -62,6 +62,7 @@ app.use("/api/invoices", invoiceRoutes);
 app.use("/api/funders", funderRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/coupons", couponRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUiMiddleware);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

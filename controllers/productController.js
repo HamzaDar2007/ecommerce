@@ -11,11 +11,11 @@ export const getAllproducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
     try {
-        const { description, name, price, stock, category, owner } = req.body;
+        const { description, name, price, stock, categoryId, owner } = req.body;
 
         const image = req.file ? req.file.path : null;
 
-        const product = await productService.create({ description, name, price, stock, category, owner, image });
+        const product = await productService.create({ description, name, price, stock, category: categoryId, owner, image });
 
         res.status(201).json(product);
     } catch (error) {
@@ -61,7 +61,7 @@ export const deleteProduct = async (req, res) => {
 };
 
 export const allProductByCategory = async (req, res) => {
-    const {categoryId} = req.params
+    const { categoryId } = req.params
     try {
         const products = await productService.getAllProductByCategoryId(categoryId)
         console.log('all products', products)
